@@ -31,6 +31,22 @@
                 <li class="nav-item" id="cab">
                   <a class="nav-link mx-5 font-menu" href="{{ route('historia') }}">História</a>
                 </li>
+
+                @if (Auth::check())
+                <li class="nav-item" id="cab">
+                    <a class="nav-link mx-5 font-menu" href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+                @else
+                <li class="nav-item" id="cab">
+                    <a class="nav-link mx-5 font-menu" href="{{ route('login') }}">Login</a>
+                </li>
+                @endif
                 
        </nav> 
       <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
@@ -97,7 +113,7 @@
         <div class="card text-center col-md-12">
           <div class="card-body">
             <p class="card-text">Gostou do conteúdo acima?, clique no botão abaixo e receba mais informações abaixo!.</p>
-            <a href="{{ route('formulario') }}" class="btn btn-danger">Inscreva-se</a>
+            <a href="{{ route('register') }}" class="btn btn-danger">Inscreva-se</a>
           </div>
         </div>
       </div>
