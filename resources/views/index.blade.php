@@ -33,21 +33,27 @@
                 </li>
 
                 @if (Auth::check())
-                <li class="nav-item" id="cab">
-                    <a class="nav-link mx-5 font-menu" href="{{ route('logout') }}"
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </li>
+                    @if (Auth::user()->id == 3)
+                        <li class="nav-item" id="cab">
+                            <a class="nav-link mx-5 font-menu" href="{{ route('admin.comments.index') }}">Painel Administrativo</a>
+                        </li>
+                    @endif
+                    <li class="nav-item" id="cab">
+                        <a class="nav-link mx-5 font-menu" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                 @else
-                <li class="nav-item" id="cab">
-                    <a class="nav-link mx-5 font-menu" href="{{ route('login') }}">Login</a>
-                </li>
+                    <li class="nav-item" id="cab">
+                        <a class="nav-link mx-5 font-menu" href="{{ route('login') }}">Login</a>
+                    </li>
                 @endif
-                
+            </ul>
+        </div>
        </nav> 
       <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -56,7 +62,6 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
 
-        
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block w-100" width="800px" height="400px" src="img/Italia-Roteiro3-compressor.jpg" alt="Primeiro Slide">
@@ -117,6 +122,34 @@
           </div>
         </div>
       </div>
+      <div class="container mt-3">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('comments.store') }}">
+            @csrf
+            <div class="form-group">
+                <label for="comment">Deixe um Comentário:</label>
+                <textarea name="comment" id="comment" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        @if(isset($comments) && $comments->isEmpty())
+        @elseif(isset($comments))
+            @foreach($comments as $comment)
+                <div class="comment">
+                    <p><strong>{{ $comment->user->name }}</strong>: {{ $comment->comment }}</p>
+                </div>
+            @endforeach
+        @else
+        @endif
+    </div>
+    <div class="container">
+      <a href="{{ route('comments.approved') }}">Clique aqui para exibir todos os comentarios</a>
+    </div>
       <br>
       <br>
       <footer class="bg-secondary text-white pt-1 pb-1">

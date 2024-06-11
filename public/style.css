@@ -16,6 +16,12 @@ h2{
     color: black;
 }
 
+h3{
+    font-style: italic;
+    font-size: 1.3rem;
+    color: black;
+}
+
 h5{
     text-transform: uppercase;
     font-size: 1.0rem;
