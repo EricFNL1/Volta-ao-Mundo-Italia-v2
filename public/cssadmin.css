@@ -1,0 +1,74 @@
+/* Geral */
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+/* Cabeçalho */
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Formulários */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Botões */
+.btn-primary, .btn-danger, .btn-success, .btn-secondary {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Tabelas */
+.table {
+    margin-top: 20px;
+    background-color: #ffffff;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+/* Alerts */
+.alert {
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #343a40;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

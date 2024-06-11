@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-<body>
-    <div class="container">
+@extends('layouts.app')
+
+@section('title', 'Login')
+
+@section('content')
+<div class="container mt-4">
+    <div class="form-container">
         <h2>Login</h2>
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <div>
+            <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Entrar</button>
         </form>
         <p>Não tem uma conta? <a href="{{ route('register') }}">Registre-se aqui</a></p>
     </div>
-</body>
-</html>
+</div>
+@endsection

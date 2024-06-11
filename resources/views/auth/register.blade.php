@@ -1,36 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h2>Register</h2>
+@extends('layouts.app')
+
+@section('title', 'Registrar')
+
+@section('content')
+<div class="container mt-4">
+    <div class="form-container">
+        <h2>Registrar</h2>
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <div>
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name" value="{{ old('name') }}" required>
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email" value="{{ old('email', isset($email) ? $email : '') }}" required>
+                <input type="email" class="form-control" id="email" name="email" value="{{ old('email', isset($email) ? $email : '') }}" required>
             </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <div>
-                <label for="password_confirmation">Confirm Password:</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" required>
+            <div class="form-group">
+                <label for="password_confirmation">Confirme a Senha:</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
             </div>
-            <div>
-                <button type="submit">Register</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
     </div>
-</body>
-</html>
+</div>
+@endsection
