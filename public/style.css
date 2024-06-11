@@ -101,4 +101,9 @@ footer {
     width: 100%;
 }
 
+.weather-info {
+    font-size: 18px;
+    color: black;
+}
+
 
