@@ -21,5 +21,6 @@
             @endforeach
         @endif
     </div>
+    <a href="{{ route('index') }}">Clique aqui para retornar a página!</a>
 </body>
 </html>

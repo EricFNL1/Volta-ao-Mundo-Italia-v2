@@ -7,7 +7,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminCommentController;
-
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,7 +42,9 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/comments', [AdminCommentController::class, 'index'])->name('admin.comments.index');
-    Route::post('/comments/{comment}', [AdminCommentController::class, 'update'])->name('admin.comments.update');
+    Route::post('/comments/update/{comment}', [AdminCommentController::class, 'update'])->name('admin.comments.update');
+    Route::post('/comments/import', [AdminCommentController::class, 'import'])->name('admin.comments.import');
+    Route::get('/comments/export', [AdminCommentController::class, 'export'])->name('admin.comments.export');
 });
 
 Route::get('/comments', [HomeController::class, 'showApprovedComments'])->name('comments.approved');

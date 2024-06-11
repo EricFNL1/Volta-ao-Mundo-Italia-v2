@@ -16,7 +16,22 @@
             </div>
         @endif
 
-        <table class="table">
+        <!-- Formulário de Importação -->
+        <form action="{{ route('admin.comments.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label for="file">Importar Comentários (JSON):</label>
+                <input type="file" name="file" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Importar</button>
+        </form>
+
+        <!-- Botão de Exportação -->
+        <form action="{{ route('admin.comments.export') }}" method="GET">
+            <button type="submit" class="btn btn-secondary mt-2">Exportar Comentários (JSON)</button>
+        </form>
+
+        <table class="table mt-4">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -48,6 +63,6 @@
             </tbody>
         </table>
     </div>
-    <a href="{{ route('index') }}">Clique aqui para retornar a página Inicial!</a>
+    <a href="{{ route('index') }}">Clique aqui para retornar a página!</a>
 </body>
 </html>
