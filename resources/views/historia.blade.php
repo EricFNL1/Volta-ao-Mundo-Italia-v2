@@ -10,15 +10,15 @@
 <body class="background">
     <h1>Historia Italiana.</h1>
     <nav class="navbar navbar-expand-lg navbarcolor" >
-        <div id="logo">
-         <a href="{{ route('index') }}"><img class="img-fluid  ml-5 " width="100px" height="100px" src="img/genoa-italy.gif"></a>
-       </div>
-       <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-           <span class="btn btn-secondary dropdown-toggle" ></span>
-       </button>
-       <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
-           <ul class="navbar-nav mx-auto mt-3 mb-2">
-           <li class="nav-item active " id="cab">
+         <div id="logo">
+          <a href="{{ route('index') }}"><img class="img-fluid  ml-5 " width="100px" height="100px" src="img/genoa-italy.gif"></a>
+        </div>
+        <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="btn btn-secondary dropdown-toggle" ></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+            <ul class="navbar-nav mx-auto mt-3 mb-2">
+                <li class="nav-item active " id="cab">
                   <a class="nav-link mx-5 font-menu" href="{{ route('index') }}">Home</a>
                 </li>
                 <li class="nav-item" id="cab">
@@ -30,9 +30,30 @@
                 <li class="nav-item" id="cab">
                   <a class="nav-link mx-5 font-menu" href="{{ route('historia') }}">História</a>
                 </li>
-               
-      </nav> 
 
+                @if (Auth::check())
+                    @if (Auth::user()->id == 3)
+                        <li class="nav-item" id="cab">
+                            <a class="nav-link mx-5 font-menu" href="{{ route('admin.comments.index') }}">Painel Administrativo</a>
+                        </li>
+                    @endif
+                    <li class="nav-item" id="cab">
+                        <a class="nav-link mx-5 font-menu" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item" id="cab">
+                        <a class="nav-link mx-5 font-menu" href="{{ route('login') }}">Login</a>
+                    </li>
+                @endif
+            </ul>
+        </div>
+       </nav> 
       <div class="row container text-center mx-auto mt-3">
         <div class="col-md-12">
           <div class="card">
