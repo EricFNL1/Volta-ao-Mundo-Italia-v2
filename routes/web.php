@@ -8,6 +8,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminCommentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TouristController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,6 +49,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 });
 
 Route::get('/comments', [HomeController::class, 'showApprovedComments'])->name('comments.approved');
+
+Route::get('/pontturisticos', [TouristController::class, 'index'])->name('pontturisticos');
 
 Route::get('/', function () {
     return view('index');

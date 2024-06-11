@@ -37,8 +37,7 @@
                 <li class="nav-item" id="cab">
                   <a class="nav-link mx-5 font-menu" href="{{ route('historia') }}">História</a>
                 </li>
-               
-      </nav> 
+        </nav> 
 
       <div class="row container text-center mx-auto mt-3">
         <div class="col-md-4">
@@ -82,11 +81,18 @@
           </div>
         </div>
       </div>
+      <div class="container text-center">
+            @if ($weatherData)
+                @foreach ($weatherData as $city => $weather)
+                    <h3>{{ $city }}</h3>
+                    <p>Temperatura: {{ $weather['main']['temp'] }} °C</p>
+                    <p>Condição: {{ $weather['weather'][0]['description'] }}</p>
+                @endforeach
+            @else
+                <p>Não foi possível obter os dados meteorológicos.</p>
+            @endif
+        </div>
 
-      <br>
-      <br>
-      <br>
-      <br>
       <br>
       <br>
       <br>
